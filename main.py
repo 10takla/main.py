@@ -104,24 +104,7 @@ class Predicat():
                             break
         self.cvantors = list(reversed(self.cvantors))
 
-    def itap5(self):
-        perem = []
-        count_obsh = 0  # колич кванторов всеобщ
-        tmp = []
-        for i, word in enumerate(self.cvantors):
-            if '∃' in word:
-                if count_obsh > 0:
-                    for y in range(len(self.form)):
-                        for l in range(len(self.form[y])):
-                            if self.form[y][l] == word[2]:
-                                self.form[y] = self.form[y].replace(word[2], 'f(' + ','.join(perem) + ')')
-                else:
-                    pass
-            if '∀' in word:
-                tmp += [word]
-                count_obsh += 1
-                perem += [word[2]]
-        self.cvantors = tmp
+
 
     def itap6(self):
         for i, word in enumerate(self.form):
