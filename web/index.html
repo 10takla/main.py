@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="eel.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="input">
+    <input autofocus>
+    <button>Вычислить</button>
+</div>
+<div class="symbols"></div>
+<div class="formula">
+
+</div>
+</body>
+<script>
+    $(document).click(function (){
+        $('input').focus();
+    })
+    var symbols = ['&rarr;', '&harr;', '&forall;', '&exist;', '&', '&or;']
+    for (var i in symbols) {
+        $('.symbols').append('<button>' + symbols[i] + '</button>')
+    }
+    var text = ''
+    $('.symbols').on('click', 'button', function () {
+        text += $(this).text();
+        $('input').val(text);
+    })
+    $('input').change(function () {
+        text = $(this).val();
+    })
+    $('.input').keypress(function (e) {
+        var key = e.which;
+        if(key == 13)  // the enter key code
+        {
+            $('.input button').click();
+            return false;
+        }
+    });
+    $('.input button').click(async function () {
+        await eel.to_python($('input').val());
+    })
+
+    eel.expose(to_js);
+
+    function to_js(x) {
+        $('.formula').html(x);
+    }
+</script>
+</html>

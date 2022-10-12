@@ -1,0 +1,41 @@
+input, button {
+    font: inherit;
+}
+
+body {
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.formula {
+
+}
+
+#oper_impl, #oper_equiv {
+    color: red;
+}
+
+#cvan_obsh {
+    color: #0059ff;
+}
+
+#cvan_sush {
+    color: #00ff22;
+}
+
+.input {
+    display: flex;
+}
+
+.symbols {
+    display: flex;
+    gap: 1em;
+}
+
+.symbols button {
+    width: 2em;
+    height: 2em;
+    padding: 0.5em;
+}
